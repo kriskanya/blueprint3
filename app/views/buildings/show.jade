@@ -1,0 +1,19 @@
+extends ../shared/template
+
+block content
+  h1= title
+  h2 $#{rate.toFixed(2)}
+
+  button#create-room Create Room
+
+  select#floor
+    option Select a Floor
+    each floor in floors
+      option#floorOption(data-img=floor.photo, value=floor._id)= floor.name
+
+  table#table
+    tbody
+    - for(var i = 0; i < bldg.x; i++)
+      tr
+        - for(var j = 0; j < bldg.y; j++)
+          td(data-x=i, data-y=j)
